@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>留言互动 - 贝贝和维维</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <a href=" ">首页</a >
+        <a href="pet_intro.html">萌宠档案</a >
+        <a href="daily.html">日常时光</a >
+        <a href="message.html">留言互动</a >
+        <a href="login.html">登录</a >
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 留言互动模块 -->
+        <div class="message-section">
+            <h2 class="message-main-title">贝贝和维维的留言板</h2>
+            
+            <!-- 留言输入区域 -->
+            <div class="message-input">
+                <input type="text" class="user-name" placeholder="请输入你的昵称">
+                <textarea class="message-content" placeholder="想对贝贝和维维说些什么呢？"></textarea>
+                <button class="submit-btn">提交留言</button>
+            </div>
+
+            <!-- 留言展示区域 -->
+            <div class="message-list">
+                <div class="message-item">
+                    <span class="name-tag">铲屎官小暖</span>
+                    <p class="content-text">贝贝的小比熊样子太萌啦，好想捏捏它的脸～</p >
+                    <span class="time-tag">2025-12-29</span>
+                </div>
+                <div class="message-item">
+                    <span class="name-tag">猫奴小柯</span>
+                    <p class="content-text">维维的睡姿也太可爱了，我家猫也是这么睡的！</p >
+                    <span class="time-tag">2025-12-28</span>
+                </div>
+                <div class="message-item">
+                    <span class="name-tag">宠物爱好者</span>
+                    <p class="content-text">希望贝贝和维维永远快乐呀～</p >
+                    <span class="time-tag">2025-12-27</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 留言成功提示弹窗 -->
+    <div class="mask"></div>
+    <div class="popup">留言提交成功！</div>
+
+    <!-- JavaScript交互逻辑 -->
+    <script>
+        // 获取页面元素
+        const submitBtn = document.querySelector('.submit-btn');
+        const popup = document.querySelector('.popup');
+        const mask = document.querySelector('.mask');
+        const userName = document.querySelector('.user-name');
+        const messageContent = document.querySelector('.message-content');
+        const messageList = document.querySelector('.message-list');
+
+        // 绑定提交按钮点击事件
+        submitBtn.addEventListener('click', function() {
+            // 验证输入内容是否为空
+            if (!userName.value.trim() || !messageContent.value.trim()) {
+                alert('请填写昵称和留言内容哦！');
+                return;
+            }
+
+            // 显示成功弹窗
+            popup.classList.add('show');
+            mask.classList.add('show');
+
+            // 2秒后隐藏弹窗，并清空输入框
+            setTimeout(function() {
+                popup.classList.remove('show');
+                mask.classList.remove('show');
+                userName.value = '';
+                messageContent.value = '';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
